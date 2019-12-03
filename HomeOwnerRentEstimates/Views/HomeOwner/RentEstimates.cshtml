@@ -1,0 +1,91 @@
+﻿@model HomeOwnerRentEstimates.Models.HomeOwner
+
+@{
+    ViewBag.Title = "RentEstimates";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>RentEstimates</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("RentZestimates", "Home", "HomeOwner", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Home", "HomeOwner")</li>
+                    <li>@*@Html.ActionLink("Login", "login", "HomeOwner")*@</li>
+                    <li>@*@Html.ActionLink("Register", "Register", "HomeOwner")*@</li>
+                    <li>@Html.ActionLink("Logout", "logOut", "HomeOwner")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.rentAmount, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.rentAmount, new { htmlAttributes = new { @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.rentAmount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.maxRentAmount, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.maxRentAmount, new { htmlAttributes = new { @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.maxRentAmount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.minRentAmount, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.minRentAmount, new { htmlAttributes = new { @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.minRentAmount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ownerRentAmount, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ownerRentAmount, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ownerRentAmount, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="text-success">
+            @ViewBag.successMsg
+        </div>
+
+
+        @*<div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <label>Enter Your Rent Expectation</label>
+                    <input type="text" />
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>*@
+    </div>
+}
+
+
